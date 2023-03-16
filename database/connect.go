@@ -28,5 +28,8 @@ func Connect() *gorm.DB {
 		panic("Failed connecting to database")
 	}
 
+	// Auto migration
+	// DB.AutoMigrate(&entities.User{})
+
 	return DB
 }

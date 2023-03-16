@@ -10,6 +10,7 @@ import (
 func AuthRoutes(v1 *fiber.Group) {
 	auth := v1.Group("/auth")
 
+	auth.Post("/register", controllers.Register)
 	auth.Post("/login", controllers.Login)
 
 	// Test protected route, should not be accessed

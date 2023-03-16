@@ -19,6 +19,16 @@ func AuthValidator(payload any) string {
 				message = err.StructField() + " field is required"
 				break
 			}
+
+			if err.Tag() == "min" && err.StructField() == "Username" {
+				message = err.Field() + " should at least contains 3 characters"
+				break
+			}
+
+			if err.Tag() == "min" && err.StructField() == "Password" {
+				message = err.Field() + " should at least contains 8 characters"
+				break
+			}
 		}
 	}
 
