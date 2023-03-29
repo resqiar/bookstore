@@ -1,6 +1,7 @@
 package libs
 
 import (
+	"bookstore/config"
 	"os"
 	"time"
 
@@ -12,8 +13,8 @@ func GenerateToken(id uint) (string, error) {
 	JWT_SECRET_BYTE := []byte(JWT_SECRET)
 
 	claims := jwt.MapClaims{
-		"id":        id,                                   // id of the signed in user
-		"expiresAt": time.Now().Add(time.Hour * 1).Unix(), // expire in 1 hour
+		"id":        id,                                                                // id of the signed in user
+		"expiresAt": time.Now().Add(time.Minute * config.TOKEN_EXPIRATION_TIME).Unix(), // expire in 1 hour
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)

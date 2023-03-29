@@ -6,7 +6,7 @@ import (
 
 var validate *validator.Validate
 
-func AuthValidator(payload any) string {
+func InputValidator(payload any) string {
 	var message string
 
 	// Instantiate validator package
