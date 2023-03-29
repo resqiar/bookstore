@@ -25,9 +25,13 @@ func main() {
 	// Connect to PostgreSQL
 	database.Connect()
 
-	api := server.Group("/api")
+	// serve static files
+	server.Static("/", "./static")
 
 	// Init Routes
+	routes.WebRoutes(server)
+
+	api := server.Group("/api")
 	routes.UsersRoutes(api.(*fiber.Group))
 	routes.AuthRoutes(api.(*fiber.Group))
 
