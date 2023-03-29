@@ -25,11 +25,11 @@ func main() {
 	// Connect to PostgreSQL
 	database.Connect()
 
-	v1 := server.Group("/v1")
+	api := server.Group("/api")
 
 	// Init Routes
-	routes.UsersRoutes(v1.(*fiber.Group))
-	routes.AuthRoutes(v1.(*fiber.Group))
+	routes.UsersRoutes(api.(*fiber.Group))
+	routes.AuthRoutes(api.(*fiber.Group))
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
