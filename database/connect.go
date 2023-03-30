@@ -1,6 +1,7 @@
 package database
 
 import (
+	"bookstore/entities"
 	"fmt"
 	"os"
 
@@ -29,7 +30,7 @@ func Connect() *gorm.DB {
 	}
 
 	// Auto migration
-	// DB.AutoMigrate(&entities.User{})
+	DB.AutoMigrate(&entities.User{})
 
 	return DB
 }

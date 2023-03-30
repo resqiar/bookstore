@@ -47,6 +47,7 @@ func Register(c *fiber.Ctx) error {
 
 	// Create a new user with the specified username & password
 	newUser := entities.User{
+		Email:    payload.Email,
 		Username: payload.Username,
 		Password: payload.Password,
 	}

@@ -9,4 +9,5 @@ import (
 func WebRoutes(server *fiber.App) {
 	server.Get("/", controllers.SendIndexWeb)
 	server.Get("/login", controllers.SendLoginWeb)
+	server.Get("/register", controllers.SendRegisterWeb)
 }

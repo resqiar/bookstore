@@ -29,6 +29,13 @@ func InputValidator(payload any) string {
 				message = err.Field() + " should at least contains 8 characters"
 				break
 			}
+
+			if err.Tag() == "email" {
+				message = err.Field() + " is invalid"
+				break
+			}
+
+			message = err.Error()
 		}
 	}
 
