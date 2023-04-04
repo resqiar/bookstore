@@ -10,4 +10,6 @@ func WebRoutes(server *fiber.App) {
 	server.Get("/", controllers.SendIndexWeb)
 	server.Get("/login", controllers.SendLoginWeb)
 	server.Get("/register", controllers.SendRegisterWeb)
+
+	server.Get("/browse", controllers.SendBrowseWeb)
 }
