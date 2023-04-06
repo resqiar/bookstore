@@ -11,4 +11,5 @@ func AuthRoutes(api *fiber.Group) {
 
 	auth.Post("/register", controllers.Register)
 	auth.Post("/login", controllers.Login)
+	auth.Get("/logout", controllers.Logout)
 }

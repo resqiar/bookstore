@@ -2,6 +2,7 @@ package routes
 
 import (
 	"bookstore/controllers"
+	"bookstore/middleware"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -12,4 +13,9 @@ func WebRoutes(server *fiber.App) {
 	server.Get("/register", controllers.SendRegisterWeb)
 
 	server.Get("/browse", controllers.SendBrowseWeb)
+
+	// ADMIN ROUTES
+	admin := server.Group("/admin", middleware.Protected, middleware.Admin)
+	admin.Get("/", controllers.SendAdminIndex)
+	admin.Get("/book/add", controllers.SendAdminAddBook)
 }
