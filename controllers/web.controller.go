@@ -24,6 +24,11 @@ func SendBrowseWeb(c *fiber.Ctx) error {
 	return c.SendFile(PATH)
 }
 
+func SendCartWeb(c *fiber.Ctx) error {
+	PATH := "./static/cart/cart.html"
+	return c.SendFile(PATH)
+}
+
 /**
  * ADMIN ROUTES *
  **/
