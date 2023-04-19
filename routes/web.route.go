@@ -13,6 +13,7 @@ func WebRoutes(server *fiber.App) {
 	server.Get("/register", controllers.SendRegisterWeb)
 
 	server.Get("/browse", controllers.SendBrowseWeb)
+	server.Get("/cart", middleware.Protected, controllers.SendCartWeb)
 
 	// ADMIN ROUTES
 	admin := server.Group("/admin", middleware.Protected, middleware.Admin)

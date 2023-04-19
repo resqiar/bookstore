@@ -34,11 +34,9 @@ async function register() {
 
     const result = await req.json();
 
-    if (result.status === 400) {
-      return renderError(result.message);
-    }
-
-    if (result.status === 200) window.location = "/";
+    if (result.status === 200) return window.location = "/";
+    
+    return renderError(result.message);
   } catch (error) {
     renderError(error.message);
   }
