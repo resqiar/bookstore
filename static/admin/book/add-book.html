@@ -186,13 +186,24 @@
           in USD currency</p>
       </div>
 
+      <!-- ERROR MESSAGE -->
+      <div id="error"></div>
+
       <!-- SUBMIT -->
       <div>
-        <button data-modal-target="confirm-modal" data-modal-toggle="confirm-modal"
-          class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          type="button">
-          Submit Book
-        </button>
+        <div class="flex gap-2 items-center">
+          <button data-modal-target="confirm-modal" data-modal-toggle="confirm-modal"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            type="button">
+            Submit Book
+          </button>
+
+          <button id="btn_clear" type="button"
+            class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">Clear</button>
+        </div>
+
+        <!-- TOAST MESSAGE -->
+        <div id="toast"></div>
 
         <div id="confirm-modal" tabindex="-1"
           class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
