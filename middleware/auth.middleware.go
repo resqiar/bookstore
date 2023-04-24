@@ -17,13 +17,16 @@ func Protected(c *fiber.Ctx) error {
 	// if there is no token inside the Cookie,
 	// send 401 status of unauthorized
 	if token == "" {
-		return c.Status(fiber.StatusTemporaryRedirect).Redirect("/login")
+		return c.Status(fiber.StatusUnauthorized).JSON(&outputs.StatusOutput{
+			Status: fiber.StatusUnauthorized,
+		})
 	}
 
 	claims, valid := libs.ParseToken(token)
-
 	if !valid {
-		return c.Status(fiber.StatusTemporaryRedirect).Redirect("/login")
+		return c.Status(fiber.StatusUnauthorized).JSON(&outputs.StatusOutput{
+			Status: fiber.StatusUnauthorized,
+		})
 	}
 
 	expTime := claims["expiresAt"].(int)
