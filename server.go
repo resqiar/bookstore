@@ -34,6 +34,7 @@ func main() {
 	api := server.Group("/api")
 	routes.UsersRoutes(api.(*fiber.Group))
 	routes.AuthRoutes(api.(*fiber.Group))
+	routes.AdminRoutes(api.(*fiber.Group))
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
