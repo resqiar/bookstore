@@ -1,6 +1,6 @@
 async function listBook() {
   try {
-    const req = await window.fetch("/api/book/list");
+    const req = await window.fetch("/api/adm/book/list");
 
     const result = await req.json();
 

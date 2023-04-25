@@ -8,6 +8,6 @@ import (
 )
 
 func AdminRoutes(api *fiber.Group) {
-	api.Post("/book/add", middleware.Protected, middleware.Admin, controllers.AddBook)
-	api.Get("/book/list", middleware.Protected, middleware.Admin, controllers.GetBooks)
+	api.Post("/adm/book/add", middleware.Protected, middleware.Admin, controllers.AddBook)
+	api.Get("/adm/book/list", middleware.Protected, middleware.Admin, controllers.GetBooks)
 }

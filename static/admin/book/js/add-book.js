@@ -18,7 +18,7 @@ async function addBook() {
   if (!bookTitle || !bookDesc || !bookDate || !bookAuthor || !bookPrice) return;
 
   try {
-    const req = await window.fetch("/api/book/add", {
+    const req = await window.fetch("/api/adm/book/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
