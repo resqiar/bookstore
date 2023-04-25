@@ -19,4 +19,5 @@ func WebRoutes(server *fiber.App) {
 	admin := server.Group("/admin", middleware.Protected, middleware.Admin)
 	admin.Get("/", controllers.SendAdminIndex)
 	admin.Get("/book/add", controllers.SendAdminAddBook)
+	admin.Get("/book/list", controllers.SendAdminListBook)
 }

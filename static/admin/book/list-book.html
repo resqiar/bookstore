@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Admin Dashboard</title>
+  <title>Admin Add Book</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -88,7 +88,7 @@
     <div class="h-full pb-4 overflow-y-auto bg-white dark:bg-gray-800">
       <ul class="space-y-2 font-medium">
         <!-- DASHBOARD  -->
-        <li class="flex items-center bg-gray-300">
+        <li class="flex items-center">
           <a href="/admin"
             class="flex w-full items-center p-3 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -101,7 +101,7 @@
         </li>
 
         <!-- BOOK LIST -->
-        <li class="flex items-center">
+        <li class="flex items-center bg-gray-300">
           <a href="/admin/book/list"
             class="flex w-full items-center p-3 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -128,31 +128,53 @@
     </div>
   </aside>
 
-  <div class="p-4 sm:ml-64">
-    <div class="flex gap-4 justify-center mt-16 px-8">
-      <div
-        class="max-w-[250px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <div class="p-5">
-          <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Total Books</h5>
-          </a>
-          <p class="mb-3 text-center text-lg font-bold text-gray-700 dark:text-gray-400">0</p>
-        </div>
-      </div>
-
-      <div
-        class="max-w-[250px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <div class="p-5">
-          <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Total Users</h5>
-          </a>
-          <p class="mb-3 text-center text-lg font-bold text-gray-700 dark:text-gray-400">0</p>
-        </div>
-      </div>
+  <div class="p-4 sm:ml-64 my-24">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" class="px-6 py-3">
+              <span class="sr-only">Image</span>
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Title
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Author
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Release Date
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Price
+            </th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <td class="flex justify-center p-4">
+              <img src="https://m.media-amazon.com/images/I/51Hn1czZh2L.jpg" width="60" height="50" alt="Apple Watch">
+            </td>
+            <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+              How to be Swag
+            </td>
+            <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+              James Bond
+            </td>
+            <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+              22/03/2002
+            </td>
+            <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+              $599
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+  <script src="/admin/book/js/list-book.js"></script>
 </body>
 
 </html>
