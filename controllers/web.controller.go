@@ -1,6 +1,9 @@
 package controllers
 
 import (
+	"bookstore/database"
+	"bookstore/entities"
+
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -27,6 +30,24 @@ func SendBrowseWeb(c *fiber.Ctx) error {
 func SendCartWeb(c *fiber.Ctx) error {
 	PATH := "./static/cart/cart.html"
 	return c.SendFile(PATH)
+}
+
+/**
+ * BOOK ROUTES *
+ **/
+func SendBookDetailWeb(c *fiber.Ctx) error {
+	id := c.Params("id")
+
+	var book entities.Book
+
+	result := database.DB.First(&book, "id = ?", id)
+	if result.Error != nil {
+		NOT_FOUND_PATH := "./static/404/404.html"
+		return c.Status(fiber.StatusNotFound).SendFile(NOT_FOUND_PATH)
+	}
+
+	PATH := "./static/book/detail.html"
+	return c.Status(fiber.StatusOK).SendFile(PATH)
 }
 
 /**

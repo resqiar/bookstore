@@ -8,4 +8,5 @@ import (
 
 func BookRoutes(api *fiber.Group) {
 	api.Get("/book/list", controllers.GetBooks)
+	api.Get("/book/:id", controllers.GetBookDetail)
 }
