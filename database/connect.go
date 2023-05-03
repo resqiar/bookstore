@@ -30,7 +30,7 @@ func Connect() *gorm.DB {
 	}
 
 	// Auto migration
-	DB.AutoMigrate(&entities.User{}, &entities.Book{})
+	DB.AutoMigrate(&entities.User{}, &entities.Book{}, &entities.Cart{})
 
 	return DB
 }
