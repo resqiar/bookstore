@@ -24,4 +24,5 @@ func WebRoutes(server *fiber.App) {
 	admin.Get("/book/add", controllers.SendAdminAddBook)
 	admin.Get("/book/list", controllers.SendAdminListBook)
 	admin.Get("/book/edit/:id", controllers.SendAdminEditBook)
+	admin.Get("/book/delete/:id", controllers.SendAdminDeleteBook)
 }

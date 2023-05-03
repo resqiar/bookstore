@@ -122,3 +122,27 @@ func GetBook(c *fiber.Ctx) error {
 		"result": book,
 	})
 }
+
+func DeleteBook(c *fiber.Ctx) error {
+	id := c.Params("id")
+	var book entities.Book
+
+	result := database.DB.Find(&book, "ID = ?", id)
+	if result.Error != nil {
+		return c.Status(fiber.StatusNotFound).JSON(&outputs.StatusOutput{
+			Status: fiber.StatusNotFound,
+		})
+	}
+
+	// Delete book data (soft delete)
+	if err := database.DB.Delete(&book).Error; err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(&outputs.ErrorOutput{
+			Status:  fiber.StatusInternalServerError,
+			Message: err.Error(),
+		})
+	}
+
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"status": fiber.StatusOK,
+	})
+}
