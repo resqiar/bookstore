@@ -41,6 +41,10 @@ function renderData(data) {
           <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
             $${current.price}
           </td>
+          <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+            <a href="/admin/book/edit/${current.ID}" class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit</a>
+            <button type="button" class="px-3 py-2 text-xs text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 rounded-lg font-medium text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</button>
+          </td>
         </tr>
     `;
 

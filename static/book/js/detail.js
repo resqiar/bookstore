@@ -4,7 +4,6 @@ async function getDetail() {
   const id = splitURL.pop();
 
   try {
-    console.log(id);
     const req = await window.fetch(`/api/book/${id}`);
     const result = await req.json();
 

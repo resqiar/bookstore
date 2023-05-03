@@ -67,3 +67,8 @@ func SendAdminListBook(c *fiber.Ctx) error {
 	PATH := "./static/admin/book/list-book.html"
 	return c.SendFile(PATH)
 }
+
+func SendAdminEditBook(c *fiber.Ctx) error {
+	PATH := "./static/admin/book/edit-book.html"
+	return c.SendFile(PATH)
+}
