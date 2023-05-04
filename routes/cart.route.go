@@ -12,4 +12,5 @@ func CartRoutes(api *fiber.Group) {
 
 	user.Get("/current", middleware.Protected, controllers.GetCurrentUserCart)
 	user.Post("/add", middleware.Protected, controllers.AddToCart)
+	user.Post("/edit", middleware.Protected, controllers.EditCart)
 }
