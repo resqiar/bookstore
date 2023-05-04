@@ -140,3 +140,43 @@ func EditCart(c *fiber.Ctx) error {
 		Status: fiber.StatusOK,
 	})
 }
+
+func DeleteCart(c *fiber.Ctx) error {
+	var payload inputs.DeleteCartInput
+
+	// Bind request body to payload struct
+	if err := c.BodyParser(&payload); err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(&outputs.ErrorOutput{
+			Status:  fiber.StatusBadRequest,
+			Message: err.Error(),
+		})
+	}
+
+	// Validate the struct to follow the format of
+	// the defined struct. see inputs/delete-cart.input.go
+	err := libs.InputValidator(payload)
+	if err != "" {
+		return c.Status(fiber.StatusBadRequest).JSON(&outputs.ErrorOutput{
+			Status:  fiber.StatusBadRequest,
+			Message: err,
+		})
+	}
+
+	var cart entities.Cart
+	result := database.DB.First(&cart, "user_id = ? AND book_id = ?", payload.UserID, payload.BookID)
+	if result.Error != nil {
+		return c.Status(fiber.StatusNotFound).JSON(&outputs.StatusOutput{
+			Status: fiber.StatusNotFound,
+		})
+	}
+
+	if err := database.DB.Delete(&cart).Error; err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(&outputs.ErrorOutput{
+			Status: fiber.StatusInternalServerError,
+		})
+	}
+
+	return c.Status(fiber.StatusOK).JSON(&outputs.StatusOutput{
+		Status: fiber.StatusOK,
+	})
+}

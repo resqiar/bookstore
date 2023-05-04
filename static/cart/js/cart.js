@@ -19,17 +19,18 @@ initCart();
 
 const notFoundError = document.getElementById("404");
 
+// update the table body
+const body = document.getElementById("table-body");
+
 function renderItems(data) {
   if (!data || !data.length) {
+    body.innerHTML = "";
     return notFoundError.innerHTML = `
       <h1 class="font-medium my-24">You don't have anything inside your cart</h1>
     `;
   }
 
   notFoundError.innerHTML = ``;
-
-  // update the table body
-  const body = document.getElementById("table-body");
 
   // reset the inner html
   body.innerHTML = "";
@@ -68,9 +69,9 @@ function renderItems(data) {
 }
 
 function initTotal() {
-  if (!cartData.length) return;
-
   const totalPriceElem = document.getElementById("total-price");
+
+  if (!cartData.length) return totalPriceElem.innerText = "$" + 0;
 
   let totalPrice = 0;
 
@@ -86,6 +87,10 @@ function initTotal() {
 async function updateQuantity(id, quantity) {
   if (!currentUser) return window.location.href = "/login";
 
+  if (Number(quantity) === 0) {
+    return deleteCart(id);
+  }
+
   try {
     const req = await fetch("/api/cart/edit", {
       method: "POST",
@@ -96,6 +101,29 @@ async function updateQuantity(id, quantity) {
         userID: Number(currentUser.ID),
         bookID: Number(id),
         quantity: Number(quantity),
+      }),
+    });
+
+    const result = await req.json();
+
+    if (result.status === 200) {
+      initCart();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function deleteCart(bookID) {
+  try {
+    const req = await fetch("/api/cart/delete", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userID: Number(currentUser.ID),
+        bookID: Number(bookID),
       }),
     });
 

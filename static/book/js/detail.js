@@ -38,8 +38,6 @@ addToCartBtn.addEventListener("click", addToCart);
 async function addToCart() {
   if (!currentUser) return window.location.href = "/login";
 
-  console.log(id);
-
   try {
     const req = await fetch("/api/cart/add", {
       method: "POST",
