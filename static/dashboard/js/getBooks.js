@@ -32,8 +32,8 @@ function renderData(data) {
         <div class="p-5">
           <h5 class="mb-2 font-bold tracking-tight text-gray-900 dark:text-white">${current.title}</h5>
           <div>
-            <p class="mb-2 font-medium text-sm tracking-tight text-gray-500 dark:text-white">${current.author}</h5>
-            <p class="mb-2 text-xs tracking-tight text-gray-300 dark:text-white">${current.releaseDate}</h5>
+            <p class="mb-2 font-medium text-sm tracking-tight text-gray-800 dark:text-white">${current.author}</h5>
+            <p class="mb-2 text-xs tracking-tight text-gray-900">${current.releaseDate}</h5>
           </div>
           <a href="/book/${current.ID}"
             class="inline-flex mt-2 items-center px-2 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
